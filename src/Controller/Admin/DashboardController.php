@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Client;
 use App\Entity\Electricity;
 use App\Entity\Installation;
 use App\Entity\Material;
@@ -55,5 +56,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Material', 'fas fa-users', Material::class)->setPermission('ROLE_TELECOMMUNICATIONS');
         yield MenuItem::linkToCrud('Instalación', 'fas fa-users', Installation::class)->setDefaultSort(['created' => 'ASC'])->setPermission('ROLE_TELECOMMUNICATIONS');
         yield MenuItem::linkToCrud('Electricidad', 'fas fa-users', Electricity::class)->setDefaultSort(['created' => 'ASC'])->setPermission('ROLE_ELECTRICITY');
+        yield MenuItem::linkToCrud('Clientes', 'fas fa-users', Client::class)->setDefaultSort(['created' => 'ASC'])->setPermission('ROLE_ADMIN');
     }
 }

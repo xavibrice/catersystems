@@ -31,6 +31,7 @@ class InstallationCrudController extends AbstractCrudController
 
         return [
             //IdField::new('id'),
+            AssociationField::new('client', 'Cliente'),
             AssociationField::new('user')->hideOnForm()->setPermission('ROLE_ADMIN'),
             IntegerField::new('code', 'Nº Instalación'),
             DateField::new('created', 'Fecha Instalación')->setFormat('dd-MM-y'),

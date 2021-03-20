@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Electricity;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -21,6 +22,7 @@ class ElectricityCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            AssociationField::new('client', 'Cliente'),
             DateField::new('created', 'Fecha creación')->setFormat('dd-MM-y'),
             TextField::new('address', 'Punto de trabajo'),
             TimeField::new('start_time', 'Hora de inicio')->setFormat('HH:mm'),

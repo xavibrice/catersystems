@@ -42,6 +42,11 @@ class Installation
      */
     private $code;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="installations")
+     */
+    private $client;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Installation
     public function setCode(int $code): self
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }

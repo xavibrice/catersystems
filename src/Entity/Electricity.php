@@ -47,6 +47,11 @@ class Electricity
      */
     private $end_time;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="electricities")
+     */
+    private $client;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Electricity
     public function setEndTime(\DateTimeInterface $end_time): self
     {
         $this->end_time = $end_time;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }
