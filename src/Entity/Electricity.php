@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ElectricityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +53,11 @@ class Electricity
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="electricities")
      */
     private $client;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=StateElectricity::class, inversedBy="electricity")
+     */
+    private $stateElectricity;
 
     public function getId(): ?int
     {
@@ -140,4 +147,17 @@ class Electricity
 
         return $this;
     }
+
+    public function getStateElectricity(): ?StateElectricity
+    {
+        return $this->stateElectricity;
+    }
+
+    public function setStateElectricity(?StateElectricity $stateElectricity): self
+    {
+        $this->stateElectricity = $stateElectricity;
+
+        return $this;
+    }
+
 }

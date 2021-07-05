@@ -59,11 +59,17 @@ class User implements UserInterface
      */
     private $electricities;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Schedule::class, mappedBy="user")
+     */
+    private $schedules;
+
     public function __construct()
     {
         $this->materials = new ArrayCollection();
         $this->installations = new ArrayCollection();
         $this->electricities = new ArrayCollection();
+        $this->schedules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -256,6 +262,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($electricity->getUser() === $this) {
                 $electricity->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Schedule[]
+     */
+    public function getSchedules(): Collection
+    {
+        return $this->schedules;
+    }
+
+    public function addSchedule(Schedule $schedule): self
+    {
+        if (!$this->schedules->contains($schedule)) {
+            $this->schedules[] = $schedule;
+            $schedule->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSchedule(Schedule $schedule): self
+    {
+        if ($this->schedules->removeElement($schedule)) {
+            // set the owning side to null (unless already changed)
+            if ($schedule->getUser() === $this) {
+                $schedule->setUser(null);
             }
         }
 

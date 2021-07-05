@@ -23,6 +23,7 @@ class ElectricityCrudController extends AbstractCrudController
     {
         return [
             AssociationField::new('client', 'Cliente'),
+            AssociationField::new('stateElectricity', 'Estado'),
             DateField::new('created', 'Fecha creación')->setFormat('dd-MM-y'),
             TextField::new('address', 'Punto de trabajo'),
             TimeField::new('start_time', 'Hora de inicio')->setFormat('HH:mm'),

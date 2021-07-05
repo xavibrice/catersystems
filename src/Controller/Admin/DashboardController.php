@@ -6,6 +6,7 @@ use App\Entity\Client;
 use App\Entity\Electricity;
 use App\Entity\Installation;
 use App\Entity\Material;
+use App\Entity\Schedule;
 use App\Entity\TypeMaterial;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -52,6 +53,7 @@ class DashboardController extends AbstractDashboardController
     {
         //yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Usuarios', 'fas fa-users', User::class)->setPermission('ROLE_ADMIN');
+        yield MenuItem::linkToCrud('Horario', 'fas fa-calendar', Schedule::class)->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Tipo Material', 'fas fa-users', TypeMaterial::class)->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Material', 'fas fa-users', Material::class)->setPermission('ROLE_TELECOMMUNICATIONS');
         yield MenuItem::linkToCrud('Instalación', 'fas fa-users', Installation::class)->setDefaultSort(['created' => 'ASC'])->setPermission('ROLE_TELECOMMUNICATIONS');
