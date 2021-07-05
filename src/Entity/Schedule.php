@@ -32,6 +32,11 @@ class Schedule
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $hours;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Schedule
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getHours(): ?int
+    {
+        return $this->hours;
+    }
+
+    public function setHours(?int $hours): self
+    {
+        $this->hours = $hours;
 
         return $this;
     }

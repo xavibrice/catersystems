@@ -6,6 +6,7 @@ use App\Entity\Schedule;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 
 class ScheduleCrudController extends AbstractCrudController
 {
@@ -21,6 +22,7 @@ class ScheduleCrudController extends AbstractCrudController
             AssociationField::new('user', 'Trabajador'),
             DateTimeField::new('start', 'Entrada'),
             DateTimeField::new('end', 'Salida'),
+            IntegerField::new('hours', 'Horas'),
         ];
     }
 
